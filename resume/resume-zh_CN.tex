@@ -1,0 +1,140 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} 
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+\usepackage{fontawesome}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{xcolor} % Add xcolor for color support
+\definecolor{crimson}{RGB}{200,0,0} % Define crimson color
+
+\hypersetup{
+hidelinks,
+colorlinks=true,
+allcolors=black,
+pdfstartview=Fit,
+breaklinks=true
+}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\name{\textbf{吴世涵}}  % 强化姓名
+
+\vspace{-2pt}
+\contactInfo{电子科技大学}{计算机科学与工程学院}{计算机科学与技术}{}
+
+\vspace{-4pt}
+\centerline{\sffamily\large{
+\faHome\ \href{https://koorye.github.io}{koorye.github.io}
+\textperiodcentered\faLink\ \href{https://koorye.github.io/blog}{koorye.github.io/blog}
+\textperiodcentered\faEnvelope\ \href{mailto:shihan.wu.koorye@outlook.com}{shihan.wu.koorye@outlook.com}
+\textperiodcentered\faPhone\ +8615869663967
+}}
+
+% 个人简介强化核心竞争力
+\vspace{-2pt}
+\section{\faUser\ 个人介绍}
+
+我是来自电子科技大学\textbf{计算机科学与技术}专业的学术硕士(学院排名\textbf{Top 1.3\%})，研究方向聚焦：
+
+\faAngleRight \textbf{视觉语言模型}的高效与高性能迁移学习 \\
+\faAngleRight \textbf{机器人视觉-语言-动作模型(VLA)}的训练与测试时适应
+
+以\textbf{一作/共一}身份发表\textbf{CVPR(CCF-A)}论文2篇，2篇CCF-A在投，获得\textbf{国家奖学金}、\textbf{优秀毕业生}等荣誉
+
+% 教育背景突出奖项和排名
+\vspace{-2pt}
+\section{\faGraduationCap\ 教育背景}
+
+\datedline{\textbf{电子科技大学}\quad 计算机科学与技术 · 学术硕士}{\textit{2023.9 - 2026.6}}
+\faAngleRight\textbf{学业表现}：\textit{GPA 3.94/4.0} \quad|\quad \textit{学院排名：6/454 \textcolor{crimson}{(Top 1.3\%)}} \\
+\faAngleRight\textbf{核心荣誉}：\textbf{\textcolor{crimson}{国家奖学金}}、\textbf{优秀研究生}、学业一等奖学金、新生一等奖学金等
+
+\vspace{2pt}
+\datedline{\textbf{电子科技大学}\quad 软件工程 · 工学学士}{\textit{2019.9 - 2023.6}}
+\faAngleRight\textbf{学业表现}：\textit{GPA 3.94/4.0} \quad|\quad \textit{专业排名：18/181 (Top 10\%)} \quad|\quad \textit{英语四六级：579/467} \\
+\faAngleRight\textbf{荣誉奖项}：\textbf{\textcolor{crimson}{优秀毕业生}}、“世强”专项奖学金、优秀学生奖学金等
+
+% 科研论文独立成区并强化CCF-A成果
+\vspace{-2pt}
+\section{\faLightbulbO\ 科研论文}
+\datedline{
+   \textbf{[ICLR 2025 投稿中·共同第一作者]}\
+   \textit{Policy Contrastive Decoding for Robotic Foundation Models}
+}
+{\textit{2025.9}}
+\faAngleRight 适用多种VLA的\textbf{策略对比解码}方法，\textbf{无需训练}实现多种主流VLA\textbf{\textcolor{crimson}{+8\%$\sim$41\%}的性能提升}
+
+\vspace{2pt}
+\datedline{
+   \textbf{[ICRA 2025 投稿中·共同第一作者]}\
+   \textit{InSpire: VLA Models with Intrinsic Spatial Reasoning}
+}
+{\textit{2025.9}}
+\faAngleRight 引入\textbf{空间推理}减轻VLA\textbf{虚假相关性}，显著提升VLA在可见\textbf{\textcolor{crimson}{(+6.2\%)}}和未见\textbf{\textcolor{crimson}{(+10\%)}}任务上的性能
+
+\vspace{2pt}
+\datedline{
+   \textbf{[\textcolor{crimson}{CVPR 2025 (CCF-A)}·第一作者]}\
+   \textit{Skip Tuning: Pre-trained Vision-Language Models are Effective and Efficient Adapters Themselves}
+}{\textit{2024.12}}
+\faAngleRight \textbf{无需引入任何额外参数}的迁移方法，实现\textbf{\textcolor{crimson}{+1.04\%准确率}}以及\textbf{\textcolor{crimson}{15x时间效率}}和\textbf{\textcolor{crimson}{6.4x内存效率}}的提升
+
+\vspace{2pt}
+\datedline{
+   \textbf{[\textcolor{crimson}{CVPR 2024 (CCF-A)}·共同第一作者]}\
+   \textit{DePT: Decoupled prompt tuning}}
+{\textit{2023.11}}
+\faAngleRight \textbf{即插即用}的解耦方法，取得现有多种Prompt Tuning方法\textbf{\textcolor{crimson}{+0.67\%$\sim$2.65\%的性能普遍提升}}
+
+\vspace{-2pt}
+\section{\faCoffee\ 实习经历}
+
+\datedline{\textbf{北京智源人工智能研究院（BAAI）}\quad 研究实习生·具身智能大模型}{\textit{2025.6 - 2025.10}}
+\faAngleRight 探索\textbf{具身智能大模型}(VLA)的\textbf{能力金字塔}，设计\textbf{大型双臂交互式机器人数据集}和\textbf{层次化技能标注}
+
+% 专利与竞赛经历分类强化
+\vspace{-2pt}
+\section{\faCogs\ 专利成果}
+
+\datedline{\textbf{[申请中·学生第二发明人]}\quad 视觉语言模型的微调方法}{\textit{2025.2}}
+\datedline{\textbf{[申请中·学生第一发明人]}\quad 基于低频增强的小样本图像分类迁移方法}{\textit{2024.8}}
+
+% 项目经历补充成果量化
+\vspace{-2pt}
+\section{\faBriefcase\ 项目经历}
+
+\datedline{\textbf{雷达信号智能检测系统} · 算法研发}{\textit{2024.3 - 2024.7}}
+\faAngleRight 设计并实现\textbf{特征提取网络}、\textbf{开集检测}等算法，提升雷达信号检测精度
+
+\vspace{2pt}
+\datedline{\textbf{智能安全驾驶系统} · 后端开发与运维}{\textit{2022.4 - 2022.8}}
+\faAngleRight 负责\textbf{数据库设计}、\textbf{分布式后端开发}、\textbf{容器化部署}等
+
+\vspace{-2pt}
+\section{\faTrophy\ 竞赛奖项}
+
+\datedline{\textbf{国际级Meritorious Winner}·美国大学生数学建模大赛(MCM)}{\textit{2021.4}}
+\datedline{\textbf{国家级铜奖}·中国国际“互联网+”大学生创新创业大赛}{\textit{2021.12}}
+\datedline{\textbf{省部级一等奖}·中国成都国际软件设计和应用竞赛}{\textit{2021.10}}
+\datedline{\textbf{省部级二等奖}·全国大学生数学建模竞赛}{\textit{2021.9}}
+\datedline{\textbf{省部级银奖}·“挑战杯”四川省大学生创业计划竞赛}{\textit{2022.7}}
+
+% 技术栈分层展示
+\vspace{-2pt}
+\section{\faCode\ 技术能力}
+
+\textbf{核心能力}: 视觉语言模型(CLIP、LLaVa)及微调(Prompt Tuning、LoRA)、VLA模型(OpenVLA、$\pi_0$等)
+
+\textbf{编程语言}: Python、Java、C、C\#、JavaScript、SQL等
+
+\textbf{算法框架}: PyTorch、Keras、MMDetection、Scikit-learn等
+
+\textbf{工程能力}: 前后端(Vue、SpringBoot)、数据库(MySQL、Redis)、运维(Docker)、游戏(Unity3D)、移动端
+
+\end{document}

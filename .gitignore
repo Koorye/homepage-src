@@ -1,0 +1,11 @@
+dist/
+docs/
+node_modules/
+*.pdf
+*.log
+*.zip
+*.tar.gz
+*.tgz
+*.out
+*.aux
+*.bbl
