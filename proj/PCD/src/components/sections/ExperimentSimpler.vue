@@ -24,8 +24,8 @@ import experiment from '../mds/experiment_simpler.mdx';
 }
 
 .caption-img {
-    width: 84%;
-    margin: 0 7%;
+    width: 100%;
+    margin: 0;
 }
 
 .caption-text {

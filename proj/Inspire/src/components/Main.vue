@@ -48,5 +48,5 @@ export default {
   <ExperimentCalvin/>
   <!-- <ExperimentFactors/> -->
   <ExperimentAttention/>
-  <Citation/>
+  <!-- <Citation/> -->
 </template>
