@@ -1,323 +1,410 @@
 <template>
-  <section class="robot-carousel">
-    <div class="container">
-      <h2 class="section-title">Robot Type Introduction</h2>
-      
-      <!-- Swiper轮播图容器 -->
-      <div class="carousel-container">
-        <swiper
-          :modules="modules"
-          :slides-per-view="5"
-          :space-between="30"
-          :loop="true"
-          :autoplay="{
-            delay: 1500,
-            disableOnInteraction: false,
-          }"
-          :pagination="{
-            clickable: true,
-            dynamicBullets: true
-          }"
-          :navigation="{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          }"
-          class="robot-swiper"
-        >
-          <swiper-slide v-for="(robot, index) in robots" :key="index" class="robot-slide">
-            <div class="robot-card">
-              <div class="robot-image">
-                <img :src="getImageUrl(robot.image)" :alt="robot.name" />
-              </div>
-              <div class="robot-info">
-                <h3 class="robot-name">{{ robot.name }}</h3>
-                <p class="robot-type">{{ robot.type }}</p>
-                <p class="robot-features" v-if="robot.features">{{ robot.features }}</p>
-              </div>
-            </div>
-          </swiper-slide>
-          
-          <!-- 导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          
-          <!-- 分页器 -->
-          <div class="swiper-pagination"></div>
-        </swiper>
-      </div>
+  <div class="robot-showcase">
+    <h2>Robotic Platforms</h2>
+    <!-- 第一行：类型选择按钮 -->
+    <div class="type-buttons">
+      <button 
+        v-for="type in robotTypes" 
+        :key="type.id"
+        @click="selectType(type.id)"
+        :class="{ active: currentType === type.id }"
+        class="type-button"
+      >
+        <img :src="type.icon" :alt="type.name" class="type-icon" />
+        <span class="type-name">{{ type.name }}</span>
+      </button>
     </div>
-  </section>
+    
+    <!-- 第二行：机器人展示区域 -->
+    <div class="robot-display">
+      <transition-group name="fade" tag="div" class="robot-grid">
+        <div 
+          v-for="robot in currentRobots" 
+          :key="robot.id"
+          class="robot-card"
+        >
+          <div class="robot-image-container">
+            <img :src="robot.image" :alt="robot.name" class="robot-image" />
+          </div>
+          <div class="robot-info">
+            <h3 class="robot-title">{{ robot.name }}</h3>
+            <p v-if="robot.features" class="robot-features">{{ robot.features }}</p>
+          </div>
+        </div>
+      </transition-group>
+    </div>
+  </div>
 </template>
 
 <script setup>
-// 引入Swiper组件和功能模块
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
-// 注册Swiper模块
-const modules = [Autoplay, Pagination, Navigation];
-
-// 机器人数据
-const robots = [
-  {
-    image: 'agilex cobot magic.png',
-    name: 'Agilex COBOT MAGIC',
-    type: 'Dual Robot'
-  },
-  {
-    image: 'galaxea r1 lite.png',
-    name: 'Galaxea R1 Lite',
-    type: 'Dual Robot'
-  },
-  {
-    image: 'galbot g1.png',
-    name: 'Galbot G1',
-    type: 'Half-Humanoid'
-  },
-  {
-    image: 'tianqing a2.png',
-    name: 'Tianqing A2',
-    type: 'Half-Humanoid'
-  },
-  {
-    image: 'realman aida l.png',
-    name: 'Realman AIDA-L',
-    type: 'Half-Humanoid'
-  },
-  {
-    image: 'ai2 alphabot 2.png',
-    name: 'AI2 Alphabot 2',
-    type: 'Half-Humanoid',
-    features: 'Dexterous Hand'
-  },
-  {
-    image: 'airbot mmk2.png',
-    name: 'AIRBOT MMK2',
-    type: 'Half-Humanoid',
-    features: 'Dexterous Hand'
-  },
-  {
-    image: 'leju kuavo 4 pro.png',
-    name: 'LEJU Kuavo 4 Pro',
-    type: 'Humanoid',
-    features: 'Dexterous Hand'
-  },
-  {
-    image: 'unitree g1edu.png',
-    name: 'Unitree G1edu',
-    type: 'Humanoid',
-    features: 'Dexterous Hand'
-  }
-];
-
-// 获取图片URL
+// 动态导入图片函数
 const getImageUrl = (imageName) => {
-  return `/robots/${imageName}`;
-};
+  return new URL(`../assets/robots/${imageName}`, import.meta.url).href
+}
+
+// 机器人类型数据
+const robotTypes = ref([
+  {
+    id: 'dual',
+    name: 'Dual',
+    icon: getImageUrl('dual.png')
+  },
+  {
+    id: 'half-humanoid',
+    name: 'Half-Humanoid',
+    icon: getImageUrl('half-humanoid.png')
+  },
+  {
+    id: 'humanoid',
+    name: 'Humanoid',
+    icon: getImageUrl('humanoid.png')
+  }
+])
+
+// 所有机器人数据
+const allRobots = ref({
+  dual: [
+    {
+      id: 1,
+      name: 'Agilex COBOT MAGIC',
+      image: getImageUrl('agilex cobot magic.png'),
+      features: ''
+    },
+    {
+      id: 2,
+      name: 'Galaxea R1 Lite',
+      image: getImageUrl('galaxea r1 lite.png'),
+      features: ''
+    },
+    {
+      id: 3,
+      name: 'FutureWei ADora',
+      image: getImageUrl('galaxea r1 lite.png'),
+      features: ''
+    }
+  ],
+  'half-humanoid': [
+    {
+      id: 1,
+      name: 'Galbot G1',
+      image: getImageUrl('galbot g1.png'),
+      features: ''
+    },
+    {
+      id: 2,
+      name: 'Tianqing A2',
+      image: getImageUrl('tianqing a2.png'),
+      features: ''
+    },
+    {
+      id: 3,
+      name: 'Realman AIDA-L',
+      image: getImageUrl('realman aida l.png'),
+      features: ''
+    },
+    {
+      id: 4,
+      name: 'AI2 Alphabot 2',
+      image: getImageUrl('ai2 alphabot 2.png'),
+      features: 'Dexterous Hand'
+    },
+    {
+      id: 5,
+      name: 'AIRBOT MMK2',
+      image: getImageUrl('airbot mmk2.png'),
+      features: 'Dexterous Hand'
+    }
+  ],
+  humanoid: [
+    {
+      id: 1,
+      name: 'LEJU Kuavo 4 Pro',
+      image: getImageUrl('leju kuavo 4 pro.png'),
+      features: 'Dexterous Hand'
+    },
+    {
+      id: 2,
+      name: 'Unitree G1edu',
+      image: getImageUrl('unitree g1edu.png'),
+      features: 'Dexterous Hand'
+    }
+  ]
+})
+
+// 响应式数据
+const currentType = ref('dual')
+let autoSwitchTimer = null
+const switchInterval = 3000 // 3秒切换间隔
+
+// 计算当前显示的机器人
+const currentRobots = computed(() => {
+  return allRobots.value[currentType.value] || []
+})
+
+// 选择类型
+const selectType = (typeId) => {
+  currentType.value = typeId
+  // 重置自动切换计时器
+  restartAutoSwitch()
+}
+
+// 切换到下一个类型
+const switchToNextType = () => {
+  const currentIndex = robotTypes.value.findIndex(type => type.id === currentType.value)
+  const nextIndex = (currentIndex + 1) % robotTypes.value.length
+  currentType.value = robotTypes.value[nextIndex].id
+}
+
+// 开始自动切换
+const startAutoSwitch = () => {
+  stopAutoSwitch() // 确保没有重复的定时器
+  autoSwitchTimer = setInterval(switchToNextType, switchInterval)
+}
+
+// 停止自动切换
+const stopAutoSwitch = () => {
+  if (autoSwitchTimer) {
+    clearInterval(autoSwitchTimer)
+    autoSwitchTimer = null
+  }
+}
+
+// 重新启动自动切换
+const restartAutoSwitch = () => {
+  stopAutoSwitch()
+  startAutoSwitch()
+}
+
+// 生命周期钩子
+onMounted(() => {
+  // 组件挂载后启动自动切换
+  startAutoSwitch()
+})
+
+onUnmounted(() => {
+  // 组件销毁时清理定时器
+  stopAutoSwitch()
+})
 </script>
 
 <style scoped>
-.robot-carousel {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
-
-.container {
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section-title {
+h2 {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: #2c3e50;
-  font-weight: 700;
 }
 
-.carousel-container {
-  height: 420px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-}
-
-.robot-swiper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.robot-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.robot-showcase {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 2rem;
+  background: transparent;
+  min-height: 100vh;
 }
 
-.robot-card {
+.type-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.type-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  padding: 1.5rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
 }
+
+.type-button:hover {
+  transform: translateY(-2px);
+  box-shadow: none;
+  border-color: #3498db;
+}
+
+.type-button.active {
+  border-color: #3498db;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.type-icon {
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+}
+
+.type-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.robot-display {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto; /* 添加水平滚动 */
+  padding: 1rem 0;
+}
+
+.robot-grid {
+  display: flex; /* 改为flex布局实现不换行 */
+  flex-wrap: nowrap; /* 禁止换行 */
+  gap: 2rem; /* 卡片间距 */
+  padding: 1rem;
+  justify-content: flex-start; /* 左对齐 */
+  min-width: min-content; /* 确保容器足够宽以容纳所有卡片 */
+}
+
+.robot-card {
+  border-radius: 8px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  min-width: 50px;
+  /* height: 250px; */
+  flex-shrink: 0; /* 防止卡片被压缩 */
+}
+
 
 .robot-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
+  box-shadow: none;
 }
 
-.robot-image {
-  width: 100%;
-  height: 200px;
+.robot-image-container {
+  height: auto;
   overflow: hidden;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
-.robot-image img {
-  width: 100%;
+.robot-image {
+  /* width: 50%; */
+  /* aspect-ratio: 1/2; */
   height: 200px;
   object-fit: contain;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
-.robot-card:hover .robot-image img {
-  transform: scale(1.05);
+.robot-card:hover .robot-image {
+  transform: scale(1.02);
 }
 
 .robot-info {
-  width: 100%;
   padding: 1.5rem;
   text-align: center;
-  background: white;
+  background: transparent;
 }
 
-.robot-name {
+.robot-title {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
   font-weight: 600;
-  line-height: 1.3;
-}
-
-.robot-type {
-  font-size: 1.2rem;
-  color: #3498db;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  line-height: 1.4;
 }
 
 .robot-features {
-  font-size: 1rem;
-  color: #7f8c8d;
-  font-style: italic;
   margin: 0;
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  font-style: italic;
 }
 
-/* Swiper导航按钮样式 */
-.swiper-button-prev,
-.swiper-button-next {
-  color: #3498db;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+/* 这是修复布局跳跃问题的核心CSS */
+.robot-grid {
+  position: relative; /* 为绝对定位的离开元素建立容器 */
 }
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  background: #3498db;
-  color: white;
-  transform: scale(1.1);
+.fade-move {
+  transition: transform 0.5s ease; /* 移动动画 */
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 1.2rem;
-  font-weight: bold;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease; /* 进入和离开的动画 */
 }
 
-/* Swiper分页器样式 */
-.swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  opacity: 0.7;
-  transition: all 0.3s ease;
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(20px); /* 元素从下方淡入 */
 }
 
-.swiper-pagination-bullet-active {
-  background: #3498db;
-  opacity: 1;
-  transform: scale(1.2);
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.9); /* 元素缩小淡出 */
 }
+
+.fade-leave-active {
+  position: absolute; /* 关键：使离开元素不占位 */
+  width: 100%; /* 可选的，帮助保持布局稳定 */
+}
+
+/* 移除move动画相关样式 */
 
 /* 响应式设计 */
-@media (max-width: 1024px) {
-  .carousel-container {
-    height: 550px;
-  }
-  
-  .robot-image {
-    height: 300px;
-  }
-}
-
 @media (max-width: 768px) {
-  .robot-carousel {
+  .robot-showcase {
+    padding: 1rem;
   }
   
-  .section-title {
-    font-size: 2rem;
+  .type-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
   
-  .carousel-container {
-    height: 500px;
+  .type-button {
+    width: 30%;
+    max-width: 250px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
   }
   
-  .robot-slide {
+  .type-icon {
+    width: 25%;
+    margin-bottom: 0;
   }
   
-  .robot-image {
-    height: 250px;
+  .robot-grid {
+    gap: 1rem; /* 移动端减小间距 */
   }
   
-  .robot-name {
-    font-size: 1.2rem;
-  }
-  
-  .robot-type {
-    font-size: 1.1rem;
+  .robot-card {
+    min-width: 180px; /* 移动端稍小宽度 */
   }
 }
 
 @media (max-width: 480px) {
-  .container {
+  .robot-showcase {
+    padding: 0.5rem;
   }
   
-  .carousel-container {
-    height: 450px;
+  .type-name {
+    font-size: 1rem;
   }
   
-  .robot-image {
-    height: 200px;
+  .robot-title {
+    font-size: 1.1rem;
   }
   
-  .robot-info {
-  }
-  
-  .robot-name {
-    font-size: 1.3rem;
-  }
-  
-  .swiper-button-prev,
-  .swiper-button-next {
-    display: none;
+  .robot-card {
+    min-width: 160px; /* 小屏幕更小宽度 */
   }
 }
 </style>

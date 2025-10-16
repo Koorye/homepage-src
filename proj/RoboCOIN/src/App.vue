@@ -18,7 +18,8 @@ export default {
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  /* font-family: 'Arial', sans-serif; */
+  font-family: 'Product Sans', sans-serif;
   line-height: 1.6;
 }
 

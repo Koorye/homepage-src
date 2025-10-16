@@ -16,7 +16,7 @@
           :aria-label="`访问 ${partner.name} 官方网站`"
         >
           <div class="partner-logo">
-            <img :src="`/logos/${partner.image}`" :alt="partner.name" />
+            <img :src="partner.image" :alt="partner.name" />
           </div>
           <p class="partner-name">{{ partner.name }}</p>
         </div>
@@ -30,55 +30,64 @@
 const partners = [
   { 
     id: 1, 
-    image: 'agilex.png', 
+    // image: '/logos/agilex.png', 
+    image: new URL('../assets/logos/agilex.png', import.meta.url).href,
     name: 'Agilex Robot',
     url: 'https://www.agilexrobots.com'
   },
   { 
     id: 2, 
-    image: 'ai2.png', 
+    // image: 'ai2.png', 
+    image: new URL('../assets/logos/ai2.png', import.meta.url).href,
     name: 'AI2 Robot',
     url: 'https://allenai.org'
   },
   { 
     id: 3, 
-    image: 'galaxea.png', 
+    // image: 'galaxea.png', 
+    image: new URL('../assets/logos/galaxea.png', import.meta.url).href,
     name: 'Galaxea',
     url: 'https://example.com/galaxea' // 请替换为实际网址
   },
   { 
     id: 4, 
-    image: 'galbot.png', 
+    // image: 'galbot.png', 
+    image: new URL('../assets/logos/galbot.png', import.meta.url).href,
     name: 'Galbot',
     url: 'https://example.com/galbot' // 请替换为实际网址
   },
   { 
     id: 5, 
-    image: 'leju.png', 
+    // image: 'leju.png', 
+    image: new URL('../assets/logos/leju.png', import.meta.url).href,
     name: 'LEJU Robot',
     url: 'https://www.leju.com'
   },
   { 
     id: 6, 
-    image: 'mayi.png', 
+    // image: 'mayi.png', 
+    image: new URL('../assets/logos/mayi.png', import.meta.url).href,
     name: 'Ant Group',
     url: 'https://www.antgroup.com'
   },
   { 
     id: 7, 
-    image: 'realman.png', 
+    // image: 'realman.png', 
+    image: new URL('../assets/logos/realman.png', import.meta.url).href,
     name: 'Realman Robot',
     url: 'https://example.com/realman' // 请替换为实际网址
   },
   { 
     id: 8, 
-    image: 'tianqing.png', 
+    // image: 'tianqing.png', 
+    image: new URL('../assets/logos/tianqing.png', import.meta.url).href,
     name: 'TIAN QING',
     url: 'https://example.com/tianqing' // 请替换为实际网址
   },
   { 
     id: 9, 
-    image: 'unitree.png', 
+    // image: '/logos/unitree.png', 
+    image: new URL('../assets/logos/unitree.png', import.meta.url).href,
     name: 'Unitree',
     url: 'https://www.unitree.com'
   }
