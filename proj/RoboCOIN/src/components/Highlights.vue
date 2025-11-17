@@ -1,68 +1,68 @@
 <template>
   <section class="highlights">
     <div class="container">
-      <h2 class="section-title">Highlights</h2>
-      
+      <h1 class="section-title">{{ t('highlights.title') }}</h1>
+
       <div class="highlight-column">
         <div class="highlight-item">
-          <RobotPie />
           <div class="highlight-content">
-            <h3>Most Diverse Dual-Arm Robot Bodies</h3>
-            <p>Includes 16 different robot models across three categories: dual-arm, semi-humanoid, and humanoid robots.</p>
+            <h3>{{ t('highlights.robot.title') }}</h3>
+            <p>{{ t('highlights.robot.desc') }}</p>
           </div>
+          <RobotPie />
+          <!-- <RobotCarousel /> -->
         </div>
         
         <div class="highlight-item">
-          <ScenarioPie />
           <div class="highlight-content">
-            <h3>Diverse Scenarios</h3>
-            <p>Covers 8 different scenarios across residential, commercial, and office environments.</p>
+            <h3>{{ t('highlights.scenario.title') }}</h3>
+            <p>{{ t('highlights.scenario.desc') }}</p>
           </div>
+          <ScenarioPie />
+          <!-- <ScenarioCarousel /> -->
         </div>
       </div>
+
+      <RobotCarousel />
+      <ScenarioCarousel />
       
       <div class="highlight-item2">
+        <div class="highlight-content">
+          <h3>{{ t('highlights.task.title') }}</h3>
+          <p>{{ t('highlights.task.desc') }}</p>
+        </div>
         <ActionPie />
         <ObjectPie />
-        <div class="highlight-content">
-          <h3>Hierarchical Task Design</h3>
-          <p>Tasks are organized in a hierarchical grid based on motion coordination and object variability.</p>
-        </div>
       </div>
+      <TaskCarousel />
       
       <div class="highlight-item2">
-        <div class="highlight-image">
-          <div class="image-placeholder">Annotation Image</div>
-        </div>
         <div class="highlight-content">
-          <h3>Hierarchical Annotation</h3>
-          <p>Provides scene-level, segment-level, and frame-level annotations for comprehensive analysis.</p>
+          <h3>{{ t('highlights.pyramid.title') }}</h3>
+          <p>{{ t('highlights.pyramid.desc') }}</p>
         </div>
+        <CapabilityPyramid />
       </div>
     </div>
   </section>
 </template>
 
-<script>
+<script setup>
+import { useI18n } from 'vue-i18n';
 import RobotPie from '@/components/charts/RobotPie.vue';
 import ScenarioPie from '@/components/charts/ScenarioPie.vue';
 import ActionPie from './charts/ActionPie.vue';
 import ObjectPie from './charts/ObjectPie.vue';
-
-export default {
-  name: 'Highlights',
-  components: {
-    RobotPie,
-    ScenarioPie,
-    ActionPie,
-    ObjectPie
-  }
-}
+import RobotCarousel from '@/components/carousels/RobotCarousel.vue';
+import ScenarioCarousel from '@/components/carousels/ScenarioCarousel.vue';
+import TaskCarousel from '@/components/carousels/TaskCarousel.vue';
+import CapabilityPyramid from '@/components/carousels/CapabilityPyramid.vue';
+const { t } = useI18n();
 </script>
 
 <style scoped>
 .highlights {
-  padding: 2rem 0;
+  padding: 2rem 5%;
 }
 
 .container {
@@ -73,8 +73,9 @@ export default {
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #2c3e50;
+  margin-bottom: 2rem;
 }
 
 .highlight-column {
@@ -88,6 +89,10 @@ export default {
 
 .highlight-item {
   width: 50%;
+}
+
+.highlight-item2 {
+  margin-top: 2rem;
 }
 
 .highlight-image {
@@ -109,9 +114,13 @@ export default {
 }
 
 .highlight-content p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
-  color: #7f8c8d;
+  color: #2c3e50;
+}
+
+p {
+  color: #2c3e50;
 }
 
 @media (max-width: 768px) {

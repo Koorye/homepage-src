@@ -1,8 +1,8 @@
 <template>
   <section class="partners">
     <div class="container">
-      <h2 class="section-title">Collaborating Institutions</h2>
-      
+      <h2 class="section-title">{{ t('collaborating.title') }}</h2>
+      <p class="description">{{ t('collaborating.desc') }}</p>
       <!-- 网格布局容器 -->
       <div class="partners-grid">
         <div 
@@ -26,69 +26,73 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 // 合作伙伴数据（包含外部链接）
 const partners = [
   { 
     id: 1, 
     // image: '/logos/agilex.png', 
     image: new URL('../assets/logos/agilex.png', import.meta.url).href,
-    name: 'Agilex Robot',
+    name: t('collaborating.institutions.agilex'),
     url: 'https://www.agilexrobots.com'
   },
   { 
     id: 2, 
     // image: 'ai2.png', 
     image: new URL('../assets/logos/ai2.png', import.meta.url).href,
-    name: 'AI2 Robot',
+    name: t('collaborating.institutions.ai2'),
     url: 'https://allenai.org'
   },
   { 
     id: 3, 
-    // image: 'galaxea.png', 
-    image: new URL('../assets/logos/galaxea.png', import.meta.url).href,
-    name: 'Galaxea',
-    url: 'https://example.com/galaxea' // 请替换为实际网址
+    // image: 'mayi.png', 
+    image: new URL('../assets/logos/mayi.png', import.meta.url).href,
+    name: t('collaborating.institutions.ant'),
+    url: 'https://www.antgroup.com'
   },
   { 
     id: 4, 
-    // image: 'galbot.png', 
-    image: new URL('../assets/logos/galbot.png', import.meta.url).href,
-    name: 'Galbot',
-    url: 'https://example.com/galbot' // 请替换为实际网址
+    // image: 'galaxea.png', 
+    image: new URL('../assets/logos/galaxea.png', import.meta.url).href,
+    name: t('collaborating.institutions.galaxea'),
+    url: 'https://example.com/galaxea' // 请替换为实际网址
   },
   { 
     id: 5, 
-    // image: 'leju.png', 
-    image: new URL('../assets/logos/leju.png', import.meta.url).href,
-    name: 'LEJU Robot',
-    url: 'https://www.leju.com'
+    // image: 'galbot.png', 
+    image: new URL('../assets/logos/galbot.png', import.meta.url).href,
+    name: t('collaborating.institutions.galbot'),
+    url: 'https://example.com/galbot' // 请替换为实际网址
   },
   { 
     id: 6, 
-    // image: 'mayi.png', 
-    image: new URL('../assets/logos/mayi.png', import.meta.url).href,
-    name: 'Ant Group',
-    url: 'https://www.antgroup.com'
+    // image: 'leju.png', 
+    image: new URL('../assets/logos/leju.png', import.meta.url).href,
+    name: t('collaborating.institutions.leju'),
+    url: 'https://www.leju.com'
   },
   { 
     id: 7, 
     // image: 'realman.png', 
     image: new URL('../assets/logos/realman.png', import.meta.url).href,
-    name: 'Realman Robot',
+    name: t('collaborating.institutions.realman'),
     url: 'https://example.com/realman' // 请替换为实际网址
   },
   { 
     id: 8, 
     // image: 'tianqing.png', 
     image: new URL('../assets/logos/tianqing.png', import.meta.url).href,
-    name: 'TIAN QING',
+    name: t('collaborating.institutions.tianqing'),
     url: 'https://example.com/tianqing' // 请替换为实际网址
   },
   { 
     id: 9, 
     // image: '/logos/unitree.png', 
     image: new URL('../assets/logos/unitree.png', import.meta.url).href,
-    name: 'Unitree',
+    name: t('collaborating.institutions.unitree'),
     url: 'https://www.unitree.com'
   }
 ];
@@ -103,7 +107,7 @@ const openExternalLink = (url) => {
 
 <style scoped>
 .partners {
-  padding: 4rem 0;
+  padding: 4rem 5%;
   background-color: #f8f9fa;
 }
 
@@ -115,10 +119,17 @@ const openExternalLink = (url) => {
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   color: #2c3e50;
   font-weight: 600;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
 }
 
 /* 网格布局 - 核心部分 */

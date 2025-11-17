@@ -1,34 +1,28 @@
 <template>
   <section class="core-data">
     <div class="container">
-      <h2 class="section-title">Overview</h2>
-      <div class="core-description">
-        Dual-arm manipulation represents a critical capability for robots to perform complex tasks. 
-        However, despite existing methods often relying on large-scale data, the scarcity of high-quality dual robot data-due to the inherent complexity of dual-arm coordination-remains a major obstacle. 
-        Moreover, current datasets often lack detailed scene and physical interaction descriptions, which limits a model's capacity to reason about task logic and physical constraints.
-        RoboCOIN addresses the critical challenge of high-quality data scarcity in dual-arm robot manipulation by introducing a large-scale dataset comprising over 100,000 demonstrations collected across 16robotic arm pairs.
-        It encompasses more than 40 action types and 200 objects through hand-guided and teleoperated human demonstrations, providing multi-view visual observations and structured language descriptions, with a multidimensional task taxonomy covering diverse collaboration patterns and object properties.
-        The core innovation lies in a hierarchical capability pyramid framework integrating trajectory-level annotations for global perception, segment-level labels for task planning, and frame-level details for inner-loop feedback.
-        To support the development of the high-quality RoboCOIN dataset, we created a data processing framework.
-        This framework implements quality assurance via a Robot Trajectory Markup Language (RTML) checker, generates rich hierarchical task descriptions through a multimodal-integrated semi-automatic toolchain, and an easy-to-use and flexible deployment system.
-        Experimental results demonstrate that RoboCOIN significantly enhances performance and generalization in dual-arm manipulation tasks, with the full dataset and framework being open-sourced to support future research.
-      </div>
+      <h2 class="section-title">{{ $t('overview.title') }}</h2>
+      <div class="core-description" v-html="$t('overview.paragraphs.1')"></div>
+      <div class="core-description" v-html="$t('overview.paragraphs.2')"></div>
+      <div class="core-description" v-html="$t('overview.paragraphs.3')"></div>
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-number">16</div>
-          <div class="stat-label">Dual-Arm Embodiments</div>
+          <!-- <img src="/robot.svg" alt="Robot Icon" class="stat-icon"> -->
+          <div class="stat-number">{{ $t('stats.num_embodiments') }}</div>
+          <div class="stat-label">{{ $t('overview.boxes.robot') }}</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">200K+</div>
-          <div class="stat-label">Trajectories</div>
+          <!-- <img src="/trajectory.svg" alt="Robot Icon" class="stat-icon"> -->
+          <div class="stat-number">{{ $t('stats.num_trajectories') }}</div>
+          <div class="stat-label">{{ $t('overview.boxes.trajectory') }}</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">8</div>
-          <div class="stat-label">Scenarios</div>
+          <div class="stat-number">{{ $t('stats.num_scenarios') }}</div>
+          <div class="stat-label">{{ $t('overview.boxes.scenario') }}</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">1K+</div>
-          <div class="stat-label">Tasks</div>
+          <div class="stat-number">{{ $t('stats.num_tasks') }}</div>
+          <div class="stat-label">{{ $t('overview.boxes.task') }}</div>
         </div>
       </div>
     </div>
@@ -43,11 +37,12 @@ export default {
 
 <style scoped>
 .core-data {
-  padding: 3rem 0;
+  padding: 3rem 5%;
   background-color: #f8f9fa;
 }
 
 .core-description {
+  font-size: 1.2rem;
   margin-bottom: 2rem;
   line-height: 1.6;
   color: #2c3e50;
@@ -61,7 +56,7 @@ export default {
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #2c3e50;
 }
@@ -70,6 +65,11 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
+}
+
+.stat-icon {
+  width: 100px;
+  height: 100px;
 }
 
 .stat-item {
@@ -94,6 +94,11 @@ export default {
 .stat-label {
   font-size: 1.2rem;
   color: #2c3e50;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #0011ff;
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,7 @@
 <template>
   <div class="dataset-table-container">
-    <h2>Comparison of Robot Datasets</h2>
+    <h2 class="section-title">{{ t('comparison.title') }}</h2>
+    <div class="description" v-html="t('comparison.desc')" />
     <div class="table-wrapper">
       <table class="dataset-table">
         <thead>
@@ -32,215 +33,229 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DatasetTable',
-  data() {
-    return {
-      headers: [
-        { key: 'dataset', text: 'Dataset', class: 'dataset-header' },
-        { key: 'arm', text: 'Arm', class: 'arm-header' },
-        { key: 'embodiment', text: 'Embodiment', class: 'embodiment-header' },
-        { key: 'trajectory', text: 'Trajectory', class: 'trajectory-header' },
-        { key: 'task', text: 'Task', class: 'task-header' },
-        { key: 'skill', text: 'Skill', class: 'skill-header' },
-        { key: 'dexterous', text: 'Dexterous', class: 'dexterous-header' },
-        { key: 'annotation', text: 'Annotation', class: 'annotation-header' },
-        { key: 'collection', text: 'Collection', class: 'collection-header' }
-      ],
-      datasetRows: [
-        {
-          dataset: 'Pinto and Gupta',
-          arm: 'Dual',
-          embodiment: 1,
-          trajectory: '50k',
-          task: 'n/a',
-          skill: 1,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Scripted',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'RoboNet',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '162k',
-          task: 'n/a',
-          skill: 'n/a',
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Scripted',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'MT-Opt',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '800k',
-          task: 12,
-          skill: 1,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Scripted',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'BridgeData',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '7.2k',
-          task: 71,
-          skill: 4,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'BC-Z',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '26k',
-          task: 100,
-          skill: 3,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'RH20T',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '13k',
-          task: 140,
-          skill: 33,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'RoboSet',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '98k',
-          task: 38,
-          skill: 6,
-          dexterous: false,
-          annotation: 'No',
-          collection: '30% Human / 70% Scripted',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'BridgeData V2',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '60k',
-          task: 'n/a',
-          skill: 13,
-          dexterous: false,
-          annotation: 'No',
-          collection: '85% Human / 15% Scripted',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'DROID',
-          arm: 'Single',
-          embodiment: 1,
-          trajectory: '76k',
-          task: 'n/a',
-          skill: 86,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'Open X-Embodiment',
-          arm: 'Single+Dual',
-          embodiment: 22,
-          trajectory: '1.4M',
-          task: '160k',
-          skill: 217,
-          dexterous: false,
-          annotation: 'No',
-          collection: 'Dataset Aggregation',
-          highlight: false,
-          gray: true
-        },
-        {
-          dataset: 'RoboMIND',
-          arm: 'Single+Dual',
-          embodiment: 4,
-          trajectory: '107k',
-          task: 479,
-          skill: 38,
-          dexterous: true,
-          annotation: 'Flat',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'AgiBot World Beta',
-          arm: 'Dual',
-          embodiment: 1,
-          trajectory: '1M',
-          task: 'n/a',
-          skill: 'n/a',
-          dexterous: false,
-          annotation: 'Flat',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'Open Galaxea',
-          arm: 'Dual',
-          embodiment: 1,
-          trajectory: '50k',
-          task: 'n/a',
-          skill: 'n/a',
-          dexterous: true,
-          annotation: 'Flat',
-          collection: 'Human Teleoperation',
-          highlight: false,
-          gray: false
-        },
-        {
-          dataset: 'RoboCOIN (Ours)',
-          arm: 'Dual',
-          embodiment: 16,
-          trajectory: '200k+',
-          task: '1k+',
-          skill: '50+',
-          dexterous: true,
-          annotation: 'Hierarchical',
-          collection: 'Human Teleoperation',
-          highlight: true,
-          gray: false
-        }
-      ]
-    }
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { locale, t } = useI18n()
+
+const headers = [
+  { key: 'dataset', text: t('comparison.table.header.dataset'), class: 'dataset-header' },
+  { key: 'arm', text: t('comparison.table.header.arm'), class: 'arm-header' },
+  { key: 'embodiment', text: t('comparison.table.header.embodiment'), class: 'embodiment-header' },
+  { key: 'trajectory', text: t('comparison.table.header.trajectory'), class: 'trajectory-header' },
+  { key: 'task', text: t('comparison.table.header.task'), class: 'task-header' },
+  { key: 'skill', text: t('comparison.table.header.skill'), class: 'skill-header' },
+  { key: 'dexterous', text: t('comparison.table.header.dexterous'), class: 'dexterous-header' },
+  { key: 'annotation', text: t('comparison.table.header.annotation'), class: 'annotation-header' },
+  { key: 'collection', text: t('comparison.table.header.collection'), class: 'collection-header' }
+]
+
+const datasetRows = [
+  {
+    dataset: 'Pinto and Gupta',
+    arm: t('comparison.table.content.dual'),
+    embodiment: 1,
+    trajectory: '50k',
+    task: t('comparison.table.content.na'),
+    skill: 1,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.scripted'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'RoboNet',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '162k',
+    task: t('comparison.table.content.na'),
+    skill: t('comparison.table.content.na'),
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.scripted'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'MT-Opt',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '800k',
+    task: 12,
+    skill: 1,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.scripted'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'BridgeData',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '7.2k',
+    task: 71,
+    skill: 4,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'BC-Z',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '26k',
+    task: 100,
+    skill: 3,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'RH20T',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '13k',
+    task: 140,
+    skill: 33,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'RoboSet',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '98k',
+    task: 38,
+    skill: 6,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.30human_70scripted'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'BridgeData V2',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '60k',
+    task: t('comparison.table.content.na'),
+    skill: 13,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.85human_15scripted'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'DROID',
+    arm: t('comparison.table.content.single'),
+    embodiment: 1,
+    trajectory: '76k',
+    task: t('comparison.table.content.na'),
+    skill: 86,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.30human_70scripted'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'Open X-Embodiment',
+    arm: t('comparison.table.content.single_dual'),
+    embodiment: 22,
+    trajectory: '1.4M',
+    task: '160k',
+    skill: 217,
+    dexterous: false,
+    annotation: t('comparison.table.content.no'),
+    collection: t('comparison.table.content.dataset_aggregation'),
+    highlight: false,
+    gray: true
+  },
+  {
+    dataset: 'RoboMIND',
+    arm: t('comparison.table.content.single_dual'),
+    embodiment: 4,
+    trajectory: '107k',
+    task: 479,
+    skill: 38,
+    dexterous: true,
+    annotation: t('comparison.table.content.flat'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'AgiBot World Beta',
+    arm: t('comparison.table.content.dual'),
+    embodiment: 1,
+    trajectory: '1M',
+    task: 217,
+    skill: 87,
+    dexterous: false,
+    annotation: t('comparison.table.content.flat'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'Open Galaxea',
+    arm: t('comparison.table.content.dual'),
+    embodiment: 1,
+    trajectory: '50k',
+    task: 150,
+    skill: 58,
+    dexterous: true,
+    annotation: t('comparison.table.content.flat'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: false,
+    gray: false
+  },
+  {
+    dataset: 'RoboCOIN (Ours)',
+    arm: t('comparison.table.content.dual'),
+    embodiment: t('stats.num_embodiments'),
+    trajectory: t('stats.num_trajectories'),
+    task: t('stats.num_tasks'),
+    skill: t('stats.num_actions'),
+    dexterous: true,
+    annotation: t('comparison.table.content.hierarchical'),
+    collection: t('comparison.table.content.human_teleoperation'),
+    highlight: true,
+    gray: false
   }
-}
+]
+
 </script>
 
 <style scoped>
+
 .dataset-table-container {
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
+  padding: 2rem 10% 2rem 10%;
+  background-color: #f8f9fa;
+}
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 h2 {
@@ -250,6 +265,7 @@ h2 {
 }
 
 .table-wrapper {
+  background-color: #ffffff;
   overflow-x: auto;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -264,7 +280,7 @@ h2 {
 }
 
 .dataset-table th {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   padding: 12px 8px;
   text-align: center;
   font-weight: 600;
@@ -280,7 +296,7 @@ h2 {
 }
 
 .dataset-table tbody tr:hover {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
 }
 
 /* 特殊行样式 */

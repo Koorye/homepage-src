@@ -8,6 +8,7 @@ import 'element-plus/dist/index.css'
 import ECharts from 'vue-echarts'
 // vue-echarts
 import { use } from "echarts/core";
+import i18n from './locales'
 
 import {
   CanvasRenderer
@@ -35,6 +36,6 @@ const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
 app.component('v-chart', ECharts)
-
+app.use(i18n)
 
 app.mount('#app')

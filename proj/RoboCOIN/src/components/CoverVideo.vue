@@ -18,9 +18,9 @@
       <!-- 保留覆盖文字 -->
       <div class="video-overlay">
         <h1 class="video-title">
-          <span style="color: #ff7f00;">Robo</span><span style="color: #0099ff;">CO</span><span style="color: #00c766;">IN</span>:<br>
-          An Open-Source <span style="color: #ff7f00;">Robo</span>t Learning Dataset<br>
-          with Dual-Arm <span style="color: #0099ff;">CO</span>ordination <span style="color: #00c766;">IN</span>teractions
+          <span style="color: #ff7f00;">Robo</span><span style="color: #0099ff;">CO</span><span style="color: #00c766;">IN</span>:
+          An Open-Sourced Bimanual <span style="color: #ff7f00;">Robo</span>tic<br>
+          Data <span style="color: #0099ff;">CO</span>llection for <span style="color: #00c766;">IN</span>tegrated Manipulation
         </h1>
       </div>
     </div>
@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .cover-video {
-  margin-top: 65px; /* 为固定头部留出空间 */
+  margin-top: 60px; /* 为固定头部留出空间 */
   height: 96vh;
   display: flex;
   align-items: center;

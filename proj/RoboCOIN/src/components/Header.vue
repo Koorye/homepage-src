@@ -1,39 +1,80 @@
 <template>
   <header class="header">
     <div class="logo">
-      <img class="logo-image" src="../assets/logo.svg" alt="RoboCOIN Logo" />
-      <div class="logo-text">RoboCOIN</div>
-      <img class="logo-image2" src="/logos/baai.png" alt="Robot Icon" />
+      <img class="logo-image" src="/logos/robocoin.png" alt="RoboCOIN Logo" />
     </div>
-    <nav class="nav-links">
-      <!-- <a href="#" class="nav-link">Download</a>
-      <a href="#" class="nav-link">GitHub</a>
-      <a href="#" class="nav-link">Visualization</a>
-      <a href="#" class="nav-link">About Us</a> -->
-      <div class="nav-link">
-        <img class="nav-icon" src="/icons/download.svg" alt="Download Icon" />
-        <a class="nav-item" href="#" target="_blank">Download</a>
-      </div>
-      <div class="nav-link">
-        <img class="nav-icon" src="/icons/github.svg" alt="GitHub Icon" />
-        <a class="nav-item" href="https://github.com" target="_blank">GitHub</a>
-      </div>
-      <div class="nav-link">
-        <img class="nav-icon" src="/icons/visualize.svg" alt="Visualization Icon" />
-        <a class="nav-item" href="#" target="_blank">Visualization</a>
-      </div>
-      <div class="nav-link">
-        <img class="nav-icon" src="/icons/about.svg" alt="About Us Icon" />
-        <a class="nav-item" href="#" target="_blank">About Us</a>
-      </div>
-    </nav>
+    <div class="header-right">
+      <nav class="nav-links">
+        <!-- <a href="#" class="nav-link">Download</a>
+        <a href="#" class="nav-link">GitHub</a>
+        <a href="#" class="nav-link">Visualization</a>
+        <a href="#" class="nav-link">About Us</a> -->
+        <div class="nav-link">
+          <img class="nav-icon" src="/icons/pdf.svg" alt="Technical Report Icon" />
+          <a class="nav-item" href="https://huggingface.co/RoboCOIN/datasets" target="_blank">{{ $t('header.navs.report') }}</a>
+        </div>
+        <div class="nav-link">
+          <img class="nav-icon" src="/icons/download.svg" alt="Download Icon" />
+          <a class="nav-item" href="https://huggingface.co/RoboCOIN/datasets" target="_blank">{{ $t('header.navs.download') }}</a>
+        </div>
+        <div class="nav-link">
+          <img class="nav-icon" src="/icons/github.svg" alt="GitHub Icon" />
+          <a class="nav-item" href="https://github.com" target="_blank">{{ $t('header.navs.github') }}</a>
+        </div>
+        <div class="nav-link">
+          <img class="nav-icon" src="/icons/visualize.svg" alt="Visualization Icon" />
+          <a class="nav-item" href="#" target="_blank">{{ $t('header.navs.visualization') }}</a>
+        </div>
+        <div class="nav-link">
+          <img class="nav-icon" src="/icons/about.svg" alt="About Us Icon" />
+          <a class="nav-item" href="https://www.baai.ac.cn/zh-cn/" target="_blank">{{ $t('header.navs.about') }}</a>
+        </div>
+      </nav>
+
+        <!-- 语言切换按钮 -->
+      <div class="language-switcher">
+        <button 
+          class="lang-btn" 
+          :class="{ active: currentLanguage === 'en' }"
+          @click="switchLanguage('en')"
+        >
+          English
+        </button>
+        <button 
+          class="lang-btn" 
+          :class="{ active: currentLanguage === 'zh' }"
+          @click="switchLanguage('zh')"
+        >
+          中文
+        </button>
+      </div> 
+    </div>
   </header>
 </template>
 
-<script>
-export default {
-  name: 'Header'
+<script setup>
+import { onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale, t } = useI18n()
+const currentLanguage = ref('en')
+
+// 切换语言函数
+const switchLanguage = (lang) => {
+  locale.value = lang
+  currentLanguage.value = lang
+  console.log('Switched language to:', lang)
+  localStorage.setItem('language', lang)
+  window.location.reload()
 }
+
+onMounted(() => {
+  const savedLanguage = localStorage.getItem('language')
+  if (savedLanguage) {
+    locale.value = savedLanguage
+    currentLanguage.value = savedLanguage
+  }
+})
 </script>
 
 <style scoped>
@@ -41,11 +82,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #19242e;
+  background-color: #2c3e50;
   color: white;
   position: fixed;
   top: 0;
   width: 100%;
+  height: 60px;
   z-index: 1000;
   padding: 0.5rem;
 }
@@ -55,17 +97,22 @@ export default {
   font-weight: bold;
   display: flex;
   align-items: center;
+  margin-left: 1rem;
 }
 
 .logo-image {
-  height: 50px;
-  width: 50px;
+  height: 40px;
   margin-right: 1rem;
 }
 
 .logo-image2 {
   height: 50px;
   margin-left: 1rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links {
@@ -95,6 +142,24 @@ export default {
   height: 25px;
   width: 25px;
   margin-right: 0.5rem;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 2rem;
+}
+
+.lang-btn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 @media (max-width: 768px) {
