@@ -175,7 +175,16 @@ export default {
       "ant": "蚂蚁集团",
       "realman": "睿尔曼智能",
       "tianqing": "软通天擎",
-      "unitree": "宇树科技"
+      "uestc": "电子科技大学",
+      "bupt": "北京邮电大学",
+      "ruc": "中国人民大学",
+      "hust": "华中科技大学",
+      "pku": "北京大学",
+      "tsinghua": "清华大学",
+      "stanford": "斯坦福大学",
+      "berkeley": "加州大学伯克利分校",
+      "booster": "加速进化",
+      "dora": "DORA社区"
     }
   },
   "footer": {

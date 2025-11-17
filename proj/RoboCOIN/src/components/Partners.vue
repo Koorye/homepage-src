@@ -34,67 +34,112 @@ const { t } = useI18n();
 const partners = [
   { 
     id: 1, 
-    // image: '/logos/agilex.png', 
-    image: new URL('../assets/logos/agilex.png', import.meta.url).href,
-    name: t('collaborating.institutions.agilex'),
-    url: 'https://www.agilexrobots.com'
+    image: new URL('../assets/logos/uestc.png', import.meta.url).href,
+    name: t('collaborating.institutions.uestc'),
+    url: 'https://www.uestc.edu.cn/'
+  },
+  {
+    id: 2,
+    image: new URL('../assets/logos/bupt.png', import.meta.url).href,
+    name: t('collaborating.institutions.bupt'),
+    url: 'https://www.bupt.edu.cn/'
+  },
+  {
+    id: 3,
+    image: new URL('../assets/logos/ruc.png', import.meta.url).href,
+    name: t('collaborating.institutions.ruc'),
+    url: 'https://www.ruc.edu.cn/'
+  },
+  {
+    id: 4,
+    image: new URL('../assets/logos/hust.png', import.meta.url).href,
+    name: t('collaborating.institutions.hust'),
+    url: 'https://www.hust.edu.cn/'
+  },
+  {
+    id: 5,
+    image: new URL('../assets/logos/pku.png', import.meta.url).href,
+    name: t('collaborating.institutions.pku'),
+    url: 'https://www.pku.edu.cn/'
+  },
+  {
+    id: 6,
+    image: new URL('../assets/logos/thu.png', import.meta.url).href,
+    name: t('collaborating.institutions.thu'),
+    url: 'https://www.tsinghua.edu.cn/'
+  },
+  {
+    id: 7,
+    image: new URL('../assets/logos/stanford.png', import.meta.url).href,
+    name: t('collaborating.institutions.stanford'),
+    url: 'https://www.stanford.edu/'
+  },
+  {
+    id: 8,
+    image: new URL('../assets/logos/berkeley.png', import.meta.url).href,
+    name: t('collaborating.institutions.berkeley'),
+    url: 'https://www.berkeley.edu/'
   },
   { 
-    id: 2, 
-    // image: 'ai2.png', 
-    image: new URL('../assets/logos/ai2.png', import.meta.url).href,
-    name: t('collaborating.institutions.ai2'),
-    url: 'https://allenai.org'
-  },
-  { 
-    id: 3, 
-    // image: 'mayi.png', 
+    id: 9, 
     image: new URL('../assets/logos/mayi.png', import.meta.url).href,
     name: t('collaborating.institutions.ant'),
     url: 'https://www.antgroup.com'
   },
   { 
-    id: 4, 
-    // image: 'galaxea.png', 
-    image: new URL('../assets/logos/galaxea.png', import.meta.url).href,
-    name: t('collaborating.institutions.galaxea'),
-    url: 'https://example.com/galaxea' // 请替换为实际网址
-  },
-  { 
-    id: 5, 
-    // image: 'galbot.png', 
+    id: 10, 
     image: new URL('../assets/logos/galbot.png', import.meta.url).href,
     name: t('collaborating.institutions.galbot'),
-    url: 'https://example.com/galbot' // 请替换为实际网址
+    url: 'https://www.galbot.com'
   },
   { 
-    id: 6, 
-    // image: 'leju.png', 
+    id: 11, 
+    image: new URL('../assets/logos/galaxea.png', import.meta.url).href,
+    name: t('collaborating.institutions.galaxea'),
+    url: 'https://galaxea-ai.com'
+  },
+  { 
+    id: 12, 
     image: new URL('../assets/logos/leju.png', import.meta.url).href,
     name: t('collaborating.institutions.leju'),
     url: 'https://www.leju.com'
   },
   { 
-    id: 7, 
-    // image: 'realman.png', 
-    image: new URL('../assets/logos/realman.png', import.meta.url).href,
-    name: t('collaborating.institutions.realman'),
-    url: 'https://example.com/realman' // 请替换为实际网址
+    id: 13, 
+    image: new URL('../assets/logos/agilex.png', import.meta.url).href,
+    name: t('collaborating.institutions.agilex'),
+    url: 'https://www.agilexrobots.com'
   },
   { 
-    id: 8, 
-    // image: 'tianqing.png', 
+    id: 14, 
     image: new URL('../assets/logos/tianqing.png', import.meta.url).href,
     name: t('collaborating.institutions.tianqing'),
-    url: 'https://example.com/tianqing' // 请替换为实际网址
+    url: 'https://tqartisan.com'
   },
   { 
-    id: 9, 
-    // image: '/logos/unitree.png', 
-    image: new URL('../assets/logos/unitree.png', import.meta.url).href,
-    name: t('collaborating.institutions.unitree'),
-    url: 'https://www.unitree.com'
-  }
+    id: 15, 
+    image: new URL('../assets/logos/ai2.png', import.meta.url).href,
+    name: t('collaborating.institutions.ai2'),
+    url: 'https://ai2robotics.com'
+  },
+  { 
+    id: 16, 
+    image: new URL('../assets/logos/realman.png', import.meta.url).href,
+    name: t('collaborating.institutions.realman'),
+    url: 'https://develop.realman-robotics.com'
+  },
+  { 
+    id: 17, 
+    image: new URL('../assets/logos/booster.png', import.meta.url).href,
+    name: t('collaborating.institutions.booster'),
+    url: 'https://www.booster.tech'
+  },
+  { 
+    id: 18, 
+    image: new URL('../assets/logos/dora.svg', import.meta.url).href,
+    name: t('collaborating.institutions.dora'),
+    url: 'https://doracc.com'
+  },
 ];
 
 // 打开外部链接的方法[5,6](@ref)
@@ -136,7 +181,7 @@ const openExternalLink = (url) => {
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 1rem;
   justify-items: center;
   align-items: start;
 }
@@ -169,7 +214,7 @@ const openExternalLink = (url) => {
 
 .partner-logo {
   width: 200px;
-  height: 100px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;

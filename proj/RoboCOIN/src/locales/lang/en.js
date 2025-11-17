@@ -175,7 +175,16 @@ export default {
       "ant": "Ant Group",
       "realman": "Realman Robotics",
       "tianqing": "Tqartisan",
-      "unitree": "Unitree Robotics",
+      "uestc": "University of Electronic Science and Technology of China",
+      "bupt": "Beijing University of Posts and Telecommunications",
+      "ruc": "Renmin University of China",
+      "hust": "Huazhong University of Science and Technology",
+      "pku": "Peking University",
+      "tsinghua": "Tsinghua University",
+      "stanford": "Stanford University",
+      "berkeley": "University of California, Berkeley",
+      "booster": "Booster Robotics",
+      "dora": "Dora Community",
     }
   },
   "footer": {
