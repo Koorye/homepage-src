@@ -5,7 +5,7 @@ export default {
     "num_scenarios": "16",
     "num_tasks": "421",
     "num_actions": "36",
-    "num_objects": "434",
+    "num_objects": "432",
   },
   "header": {
     "navs": {
@@ -163,6 +163,18 @@ export default {
       }
     }
   },
+  "corobot": {
+    "title": "CoRobot Framework",
+    "desc": "CoRobot is a comprehensive data processing and management framework designed for robotic applications, enabling efficient data collection, conversion, annotation, storage, and model training.",
+    "modules": {
+      "data_collect": "Supports data collection and teleoperation for 15 robot platforms",
+      "data_convert": "Supports conversion of mainstream robot data formats such as RLDS, HDF5, LeRobot, etc.",
+      "data_forge": "Data post-processing and annotation module that detects issues like stuttering, static frames, and timestamp misalignment, providing scene-level, task-level, and description-level annotations",
+      "robocoin": "A large-scale dual-arm robot dataset covering 15 robot bodies and over 180,000 trajectories from 421 tasks across 16 scenarios",
+      "data_manage": "Atomic data storage and management tool supporting data retrieval, visualization, extraction, and download",
+      "data_train": "Model training module for various robot learning algorithms, supporting the integration of embodied models like OpenPI, RDT, and ACT, and catering to customized model training requirements"
+    }
+  },
   "collaborating": {
     "title": "Collaborating Institutions",
     "desc": "We are proud to collaborate with leading institutions in the field of robotics.",
@@ -194,6 +206,7 @@ export default {
       "data": "180K+ Real World Trajectories",
       "toolchain": "Full Toolchain"
     },
+    "start": "Get Started Now:",
     "text": "Scan the QR code to join the group, get priority notification on the open source day, and have the opportunity to contact the units involved in the construction of this dataset in advance.",
     "copyright": "© 2025 Beijing Academy of Artificial Intelligence. All rights reserved."
   }

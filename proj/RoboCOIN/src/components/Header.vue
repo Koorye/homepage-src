@@ -11,20 +11,20 @@
         <a href="#" class="nav-link">About Us</a> -->
         <div class="nav-link">
           <img class="nav-icon" src="/icons/pdf.svg" alt="Technical Report Icon" />
-          <a class="nav-item" href="https://huggingface.co/RoboCOIN/datasets" target="_blank">{{ $t('header.navs.report') }}</a>
+          <a class="nav-item" href="robocoin.pdf" target="_blank">{{ $t('header.navs.report') }}</a>
         </div>
         <div class="nav-link">
           <img class="nav-icon" src="/icons/download.svg" alt="Download Icon" />
-          <a class="nav-item" href="https://huggingface.co/RoboCOIN/datasets" target="_blank">{{ $t('header.navs.download') }}</a>
+          <a class="nav-item" href="https://github.com/FlagOpen/RoboCOIN/download" target="_blank">{{ $t('header.navs.download') }}</a>
         </div>
         <div class="nav-link">
           <img class="nav-icon" src="/icons/github.svg" alt="GitHub Icon" />
-          <a class="nav-item" href="https://github.com" target="_blank">{{ $t('header.navs.github') }}</a>
+          <a class="nav-item" href="https://github.com/FlagOpen/RoboCOIN" target="_blank">{{ $t('header.navs.github') }}</a>
         </div>
-        <div class="nav-link">
+        <!-- <div class="nav-link">
           <img class="nav-icon" src="/icons/visualize.svg" alt="Visualization Icon" />
           <a class="nav-item" href="#" target="_blank">{{ $t('header.navs.visualization') }}</a>
-        </div>
+        </div> -->
         <div class="nav-link">
           <img class="nav-icon" src="/icons/about.svg" alt="About Us Icon" />
           <a class="nav-item" href="https://www.baai.ac.cn/zh-cn/" target="_blank">{{ $t('header.navs.about') }}</a>
@@ -57,7 +57,7 @@ import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
-const currentLanguage = ref('en')
+const currentLanguage = ref('en') // 初始值已设为 en
 
 // 切换语言函数
 const switchLanguage = (lang) => {
@@ -71,8 +71,14 @@ const switchLanguage = (lang) => {
 onMounted(() => {
   const savedLanguage = localStorage.getItem('language')
   if (savedLanguage) {
+    // 有保存的语言，使用保存的
     locale.value = savedLanguage
     currentLanguage.value = savedLanguage
+  } else {
+    // 无保存的语言，强制使用 en 并保存到本地
+    locale.value = 'en'
+    currentLanguage.value = 'en'
+    localStorage.setItem('language', 'en') // 首次加载时保存默认值
   }
 })
 </script>

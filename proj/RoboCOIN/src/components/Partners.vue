@@ -136,7 +136,7 @@ const partners = [
   },
   { 
     id: 18, 
-    image: new URL('../assets/logos/dora.svg', import.meta.url).href,
+    image: new URL('../assets/logos/dora.png', import.meta.url).href,
     name: t('collaborating.institutions.dora'),
     url: 'https://doracc.com'
   },

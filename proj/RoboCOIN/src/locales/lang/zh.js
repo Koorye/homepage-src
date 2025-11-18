@@ -5,7 +5,7 @@ export default {
     "num_scenarios": "16",
     "num_tasks": "421",
     "num_actions": "36",
-    "num_objects": "434",
+    "num_objects": "432",
   },
   "header": {
     "navs": {
@@ -163,6 +163,18 @@ export default {
       }
     }
   },
+  "corobot": {
+    "title": "CoRobot框架",
+    "desc": "CoRobot是一个为机器人应用设计的综合性数据处理和管理框架，实现了高效的数据采集、转换、标注、存储和模型训练。",
+    "modules": {
+      "data_collect": "支持15款机器人平台的数据采集和遥操作",
+      "data_convert": "支持主流机器人数据格式RLDS、HDF5、LeRobot等格式的转换", 
+      "data_forge": "数据后处理和标注模块，检测卡顿、静止帧、时间戳错位等信息，提供场景、任务、描述信息标注",
+      "robocoin": "大型双臂机器人数据集，涵盖15款本体和18万以上轨迹，来自16个场景的421个任务",
+      "data_manage": "数据原子化存储与管理工具，支持数据检索与可视化、抽取、下载",
+      "data_train": "多种机器人学习算法的模型训练模块，支持OpenPI、RDT、ACT等具身模型接入，定制化模型训练需求"
+    }
+  },
   "collaborating": {
     "title": "合作机构",
     "desc": "我们很自豪能与机器人领域的顶尖机构合作。",
@@ -194,6 +206,7 @@ export default {
       "data": "18万+真实世界轨迹",
       "toolchain": "完整工具链"
     },
+    "start": "即刻尝试：",
     "text": "扫描二维码加入群聊，开源日获取优先通知，并有机会提前接触参与本数据集建设的各单位。",
     "copyright": "© 2025 北京智源人工智能研究院。保留所有权利。"
   }

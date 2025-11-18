@@ -7,6 +7,7 @@
     <DatasetComparison />
     <AnnotationProcess />
     <Partners />
+    <Citation />
     <Footer />
 
     <!-- 微信悬浮按钮 -->
@@ -33,6 +34,7 @@ import AnnotationProcess from '@/components/AnnotationProcess.vue'
 import DatasetComparison from '@/components/DatasetComparison.vue'
 import Partners from '@/components/Partners.vue'
 import Footer from '@/components/Footer.vue'
+import Citation from '@/components/Citation.vue'
 
 export default {
   name: 'Home',
@@ -45,6 +47,7 @@ export default {
     AnnotationProcess,
     DatasetComparison,
     Partners,
+    Citation,
     Footer
   },
   data() {
