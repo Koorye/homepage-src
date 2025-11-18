@@ -192,7 +192,7 @@ export default {
       "ruc": "Renmin University of China",
       "hust": "Huazhong University of Science and Technology",
       "pku": "Peking University",
-      "tsinghua": "Tsinghua University",
+      "thu": "Tsinghua University",
       "stanford": "Stanford University",
       "berkeley": "University of California, Berkeley",
       "booster": "Booster Robotics",

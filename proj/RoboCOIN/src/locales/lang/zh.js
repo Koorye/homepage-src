@@ -192,7 +192,7 @@ export default {
       "ruc": "中国人民大学",
       "hust": "华中科技大学",
       "pku": "北京大学",
-      "tsinghua": "清华大学",
+      "thu": "清华大学",
       "stanford": "斯坦福大学",
       "berkeley": "加州大学伯克利分校",
       "booster": "加速进化",
