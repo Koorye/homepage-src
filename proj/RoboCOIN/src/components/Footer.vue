@@ -187,7 +187,7 @@ onUnmounted(() => {
 /* 其余样式保持不变 */
 .star-footer {
   position: relative;
-  background: linear-gradient(135deg, #0a0e29 0%, #1a1f4b 100%);
+  background: linear-gradient(180deg, #1E40AF 0%, #0b0e25 100%);
   color: white;
   padding: 60px 20px 40px;
   text-align: center;

@@ -191,6 +191,7 @@ export default {
       "bupt": "Beijing University of Posts and Telecommunications",
       "ruc": "Renmin University of China",
       "hust": "Huazhong University of Science and Technology",
+      "swjtu": "Southwest Jiaotong University",
       "pku": "Peking University",
       "thu": "Tsinghua University",
       "stanford": "Stanford University",

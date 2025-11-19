@@ -28,7 +28,7 @@ const authors = [
   "Mengfei Du", "Mingyu Cao", "Xiansheng Chen", "Hongyang Cheng", "Xiaojie Zhang", "Junkai Zhao",
   "Cheng Chi", "Sixiang Chen", "Huaihai Lyu", "Xiaoshuai Hao", "Yankai Fu", "Yequan Wang", "Bo Lei",
   "Dong Liu", "Xi Yang", "Yance Jiao", "Tengfei Pan", "Yunyan Zhang", "Songjing Wang", "Ziqian Zhang",
-  "Xu Liu", "Caowei Meng", "Zhizheng Zhang", "He Wang", "Hang Zhao", "Jiyang Gao", "Song Wang",
+  "Xu Liu", "Ji Zhang", "Caowei Meng", "Zhizheng Zhang", "He Wang", "Hang Zhao", "Jiyang Gao", "Song Wang",
   "Xiaokun Leng", "Zhiqiang Xie", "Zhenzhen Zhou", "Peng Huang", "Wu Yang", "Liaodong Guo",
   "Yichao Zhu", "Suibing Zheng", "Hao Cheng", "Xinmin Ding", "Yang Yue","Huanqian Wang", 
   "Chi Chen", "Jingrui Pang", "YuXi Qian", "Haoran Geng", "Lianli Gao", "Haiyuan Li", "Bin Fang",
