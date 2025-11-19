@@ -130,7 +130,7 @@ onUnmounted(() => {
 
 <style scoped>
 .annotation-process {
-  padding: 4rem 10%;
+  padding: 2rem 12%;
 }
 
 .container {
@@ -192,7 +192,7 @@ onUnmounted(() => {
   padding: 20px;
   border-radius: 8px;
   /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); */
-  max-width: 300px;
+  max-width: 400px;
   /* backdrop-filter: blur(10px); */
   /* border: 1px solid rgba(255, 255, 255, 0.2); */
 }

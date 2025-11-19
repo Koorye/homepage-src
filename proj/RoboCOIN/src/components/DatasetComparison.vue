@@ -240,7 +240,7 @@ const datasetRows = [
 <style scoped>
 
 .dataset-table-container {
-  padding: 2rem 10% 2rem 10%;
+  padding: 2rem 12%;
   background-color: #f8f9fa;
 }
 .section-title {

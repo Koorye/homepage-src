@@ -184,7 +184,7 @@ export default {
       "galaxea": "星海图",
       "galbot": "银河通用",
       "leju": "乐聚机器人",
-      "ant": "蚂蚁集团",
+      "ant": "蚂蚁数科，蚂蚁集团",
       "realman": "睿尔曼智能",
       "tianqing": "软通天擎",
       "uestc": "电子科技大学",

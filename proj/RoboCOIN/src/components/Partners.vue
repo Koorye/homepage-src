@@ -3,10 +3,30 @@
     <div class="container">
       <h2 class="section-title">{{ t('collaborating.title') }}</h2>
       <p class="description">{{ t('collaborating.desc') }}</p>
-      <!-- 网格布局容器 -->
-      <div class="partners-grid">
+      
+      <!-- 学校部分 -->
+      <div class="partners-grid companies-grid">
         <div 
-          v-for="partner in partners" 
+          v-for="partner in schools" 
+          :key="partner.id" 
+          class="partner-item"
+          @click="openExternalLink(partner.url)"
+          @keydown.enter="openExternalLink(partner.url)"
+          tabindex="0"
+          role="button"
+          :aria-label="`访问 ${partner.name} 官方网站`"
+        >
+          <div class="partner-logo">
+            <img :src="partner.image" :alt="partner.name" />
+          </div>
+          <p class="partner-name">{{ partner.name }}</p>
+        </div>
+      </div>
+      
+      <!-- 单位部分 -->
+      <div class="partners-grid companies-grid">
+        <div 
+          v-for="partner in companies" 
           :key="partner.id" 
           class="partner-item"
           @click="openExternalLink(partner.url)"
@@ -27,46 +47,47 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
 
 const { t } = useI18n();
 
 // 合作伙伴数据（包含外部链接）
 const partners = [
+  {
+    id: 1,
+    image: new URL('../assets/logos/thu.png', import.meta.url).href,
+    name: t('collaborating.institutions.thu'),
+    url: 'https://www.tsinghua.edu.cn/'
+  },
+  {
+    id: 2,
+    image: new URL('../assets/logos/pku.png', import.meta.url).href,
+    name: t('collaborating.institutions.pku'),
+    url: 'https://www.pku.edu.cn/'
+  },
   { 
-    id: 1, 
+    id: 3, 
     image: new URL('../assets/logos/uestc.png', import.meta.url).href,
     name: t('collaborating.institutions.uestc'),
     url: 'https://www.uestc.edu.cn/'
   },
   {
-    id: 2,
+    id: 4,
     image: new URL('../assets/logos/bupt.png', import.meta.url).href,
     name: t('collaborating.institutions.bupt'),
     url: 'https://www.bupt.edu.cn/'
   },
   {
-    id: 3,
+    id: 5,
     image: new URL('../assets/logos/ruc.png', import.meta.url).href,
     name: t('collaborating.institutions.ruc'),
     url: 'https://www.ruc.edu.cn/'
   },
   {
-    id: 4,
+    id: 6,
     image: new URL('../assets/logos/hust.png', import.meta.url).href,
     name: t('collaborating.institutions.hust'),
     url: 'https://www.hust.edu.cn/'
-  },
-  {
-    id: 5,
-    image: new URL('../assets/logos/pku.png', import.meta.url).href,
-    name: t('collaborating.institutions.pku'),
-    url: 'https://www.pku.edu.cn/'
-  },
-  {
-    id: 6,
-    image: new URL('../assets/logos/thu.png', import.meta.url).href,
-    name: t('collaborating.institutions.thu'),
-    url: 'https://www.tsinghua.edu.cn/'
   },
   {
     id: 7,
@@ -142,7 +163,11 @@ const partners = [
   },
 ];
 
-// 打开外部链接的方法[5,6](@ref)
+// 将合作伙伴数据分为学校和单位两部分[4](@ref)
+const schools = computed(() => partners.filter(partner => partner.id <= 8));
+const companies = computed(() => partners.filter(partner => partner.id > 8));
+
+// 打开外部链接的方法
 const openExternalLink = (url) => {
   if (url && url.startsWith('http')) {
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -157,7 +182,7 @@ const openExternalLink = (url) => {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -174,7 +199,7 @@ const openExternalLink = (url) => {
   text-align: center;
   font-size: 1.2rem;
   color: #2c3e50;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem; /* 增加底部间距，为两行网格提供更多空间 */
 }
 
 /* 网格布局 - 核心部分 */
@@ -184,6 +209,29 @@ const openExternalLink = (url) => {
   gap: 1rem;
   justify-items: center;
   align-items: start;
+  margin-bottom: 0rem; /* 为两个网格之间添加间距 */
+}
+
+/* 学校网格保持原有样式 */
+.schools-grid {
+  /* 学校网格样式不变 */
+}
+
+/* 单位网格 - 实现居中显示[6,8](@ref) */
+.companies-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 使用 Flexbox 实现居中[6](@ref) */
+  gap: 1rem;
+}
+
+.companies-grid .partner-item {
+  flex: 0 0 calc(25% - 1rem); /* 每行最多4个，根据实际需求调整[1](@ref) */
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .partner-item {
@@ -191,12 +239,10 @@ const openExternalLink = (url) => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 1rem;
   border-radius: 12px;
   transition: all 0.3s ease;
   width: 100%;
   max-width: 220px;
-  min-height: 180px;
   position: relative;
   cursor: pointer;
   border: 2px solid transparent;
@@ -233,24 +279,12 @@ const openExternalLink = (url) => {
 
 .partner-name {
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 1.0rem;
   font-weight: 500;
   color: #2c3e50;
   margin: 0;
-  line-height: 1.4;
+  /* line-height: 1.4; */
   word-wrap: break-word;
-}
-
-.partner-link-hint {
-  position: absolute;
-  bottom: 10px;
-  font-size: 0.75rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.partner-item:hover .partner-link-hint {
-  opacity: 1;
 }
 
 /* 响应式设计 */
@@ -258,6 +292,10 @@ const openExternalLink = (url) => {
   .partners-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
+  }
+  
+  .companies-grid .partner-item {
+    flex: 0 0 calc(33.333% - 1rem); /* 中等屏幕每行3个 */
   }
 }
 
@@ -278,6 +316,10 @@ const openExternalLink = (url) => {
   .partners-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
+  }
+  
+  .companies-grid .partner-item {
+    flex: 0 0 calc(50% - 1rem); /* 小屏幕每行2个 */
   }
   
   .partner-item {
@@ -310,6 +352,10 @@ const openExternalLink = (url) => {
     gap: 0.75rem;
   }
   
+  .companies-grid .partner-item {
+    flex: 0 0 calc(50% - 0.75rem); /* 超小屏幕每行2个 */
+  }
+  
   .partner-item {
     padding: 0.75rem 0.5rem;
     min-height: 140px;
@@ -321,11 +367,15 @@ const openExternalLink = (url) => {
   }
 }
 
-/* 小屏幕优化 - 单列布局 */
+/* 小屏幕优化 */
 @media (max-width: 360px) {
   .partners-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  
+  .companies-grid .partner-item {
+    flex: 0 0 100%; /* 最小屏幕每行1个 */
   }
   
   .partner-item {
@@ -346,13 +396,6 @@ const openExternalLink = (url) => {
   .partner-name {
     text-align: left;
     flex: 1;
-  }
-  
-  .partner-link-hint {
-    position: static;
-    margin-left: 0.5rem;
-    opacity: 1;
-    font-size: 0.7rem;
   }
 }
 </style>

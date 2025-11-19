@@ -28,19 +28,29 @@ const authors = [
   "Mengfei Du", "Mingyu Cao", "Xiansheng Chen", "Hongyang Cheng", "Xiaojie Zhang", "Junkai Zhao",
   "Cheng Chi", "Sixiang Chen", "Huaihai Lyu", "Xiaoshuai Hao", "Yankai Fu", "Yequan Wang", "Bo Lei",
   "Dong Liu", "Xi Yang", "Yance Jiao", "Tengfei Pan", "Yunyan Zhang", "Songjing Wang", "Ziqian Zhang",
-  "Xu Liu", "Caowei Meng", "Zhizheng Zhang", "He Wang", "Xing Zhao", "Jiyang Gao", "Song Wang",
+  "Xu Liu", "Caowei Meng", "Zhizheng Zhang", "He Wang", "Hang Zhao", "Jiyang Gao", "Song Wang",
   "Xiaokun Leng", "Zhiqiang Xie", "Zhenzhen Zhou", "Peng Huang", "Wu Yang", "Liaodong Guo",
-  "Yichao Zhu", "Suibing Zheng", "Hao Cheng", "Xinmin Ding", "Yang Le",
-  "Huanqian Wang", "Chi Cheng", "Jingrui Pang", "YuXi Qian", "Haoran Geng",
-  "Lianli Gao", "Hao Zhao", "Hao Dong", "Di Hu", "Yadong Mu", "Haiyuan Li", "Bin Fang", "Gao Huang",
+  "Yichao Zhu", "Suibing Zheng", "Hao Cheng", "Xinmin Ding", "Yang Yue","Huanqian Wang", 
+  "Chi Chen", "Jingrui Pang", "YuXi Qian", "Haoran Geng", "Lianli Gao", "Haiyuan Li", "Bin Fang",
+  "Gao Huang", "Hao Dong", "Yadong Mu", "Di Hu", "Hao Zhao",
   "Shanghang Zhang", "Yonghua Lin", "Zhongyuan Wang", "Guocai Yao"
 ]
 
 // 计算属性：生成BibTeX格式的引用
 const bibtexCitation = computed(() => {
-  const authorsFormatted = authors.join(' and ')
+  // 处理作者列表，最后一个名字前用"and"连接
+  let authorsFormatted;
+  if (authors.length === 0) {
+    authorsFormatted = "";
+  } else if (authors.length === 1) {
+    authorsFormatted = authors[0];
+  } else if (authors.length === 2) {
+    authorsFormatted = authors.join(' and ');
+  } else {
+    authorsFormatted = authors.slice(0, -1).join(', ') + ' and ' + authors.slice(-1);
+  }
   
-  return `@article{robocoin2025,
+  return `@article{RoboCOINReport,
   author = {${authorsFormatted}},
   title = {RoboCOIN: An Open-Sourced Bimanual Robotic Data Collection for Integrated Manipulation},
   year = {2025},
@@ -86,8 +96,8 @@ const copyCitation = async () => {
   /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
   /* border: 1px solid #e0e0e0; */
   /* border-radius: 12px; */
-  padding: 24px;
-  margin: 20px 0;
+  padding: 24px 10%;
+  margin: 20px ;
   font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
 }
 
