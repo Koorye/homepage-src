@@ -10,7 +10,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/proj/RoboCOIN/'),
+  history: createWebHistory('/RoboCOIN/'),
   routes
 })
 
