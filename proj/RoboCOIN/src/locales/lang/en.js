@@ -198,6 +198,7 @@ export default {
       "berkeley": "University of California, Berkeley",
       "booster": "Booster Robotics",
       "dora": "Dora Community",
+      "psibot": "Psibot"
     }
   },
   "footer": {

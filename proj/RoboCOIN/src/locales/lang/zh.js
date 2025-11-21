@@ -197,7 +197,8 @@ export default {
       "stanford": "斯坦福大学",
       "berkeley": "加州大学伯克利分校",
       "booster": "加速进化",
-      "dora": "DORA社区"
+      "dora": "DORA社区",
+      "psibot": "灵初智能",
     }
   },
   "footer": {

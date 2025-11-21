@@ -111,7 +111,7 @@ const partners = [
     id: 10, 
     image: new URL('../assets/logos/mayi.png', import.meta.url).href,
     name: t('collaborating.institutions.ant'),
-    url: 'https://www.antgroup.com'
+    url: 'https://antdigital.com/'
   },
   { 
     id: 11, 
@@ -160,6 +160,12 @@ const partners = [
     image: new URL('../assets/logos/booster.png', import.meta.url).href,
     name: t('collaborating.institutions.booster'),
     url: 'https://www.booster.tech'
+  },
+  {
+    id: 20,
+    image: new URL('../assets/logos/psibot.png', import.meta.url).href,
+    name: t('collaborating.institutions.psibot'),
+    url: 'https://www.psibot.ai'
   },
   { 
     id: 19, 

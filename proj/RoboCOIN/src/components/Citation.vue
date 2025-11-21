@@ -21,19 +21,19 @@ import { ref, computed } from 'vue'
 
 // 作者信息（已移除数字和符号）
 const authors = [
-  "Shihan Wu", "Xuecheng Liu", "Shaoxuan Xie", "Pengwei Wang", "Xinghang Li",
-  "Bowen Yang", "Zhe Li", "Kai Zhu", "Hongyu Wu", "Yiheng Liu", "Zhaoye Long", "Yue Wang",
-  "Chong Liu", "Dihan Wang", "Ziqiang Ni", "Xiang Yang", "You Liu", "Ruoxuan Feng", "Runtian Xu",
-  "Lei Zhang", "Denghang Huang", "Chenghao Jin", "Anlan Yin", "Xinlong Wang", "Zhenguo Sun",
-  "Mengfei Du", "Mingyu Cao", "Xiansheng Chen", "Hongyang Cheng", "Xiaojie Zhang", "Junkai Zhao",
-  "Cheng Chi", "Sixiang Chen", "Huaihai Lyu", "Xiaoshuai Hao", "Yankai Fu", "Yequan Wang", "Bo Lei",
+  "Shihan Wu", "Xuecheng Liu", "Shaoxuan Xie", "Pengwei Wang", "Xinghang Li", "Bowen Yang", 
+  "Zhe Li", "Kai Zhu", "Hongyu Wu", "Yiheng Liu", "Zhaoye Long", "Yue Wang", "Chong Liu", 
+  "Dihan Wang", "Ziqiang Ni", "Xiang Yang", "You Liu", "Ruoxuan Feng", "Runtian Xu", "Lei Zhang",
+  "Denghang Huang", "Chenghao Jin", "Anlan Yin", "Xinlong Wang", "Zhenguo Sun", "Junkai Zhao",
+  "Mengfei Du", "Mingyu Cao", "Xiansheng Chen", "Hongyang Cheng", "Xiaojie Zhang", "Yankai Fu",
+  "Ning Chen", "Cheng Chi", "Sixiang Chen", "Huaihai Lyu", "Xiaoshuai Hao", "Yankai Fu", "Yequan Wang", "Bo Lei",
   "Dong Liu", "Xi Yang", "Yance Jiao", "Tengfei Pan", "Yunyan Zhang", "Songjing Wang", "Ziqian Zhang",
-  "Xu Liu", "Ji Zhang", "Caowei Meng", "Zhizheng Zhang", "He Wang", "Hang Zhao", "Jiyang Gao", "Song Wang",
-  "Xiaokun Leng", "Zhiqiang Xie", "Zhenzhen Zhou", "Peng Huang", "Wu Yang", "Liaodong Guo",
-  "Yichao Zhu", "Suibing Zheng", "Hao Cheng", "Xinmin Ding", "Yang Yue","Huanqian Wang", 
-  "Chi Chen", "Jingrui Pang", "YuXi Qian", "Haoran Geng", "Lianli Gao", "Haiyuan Li", "Bin Fang",
-  "Gao Huang", "Hao Dong", "Yadong Mu", "Di Hu", "Hao Zhao",
-  "Shanghang Zhang", "Yonghua Lin", "Zhongyuan Wang", "Guocai Yao"
+  "Xu Liu", "Ji Zhang", "Caowei Meng", "Zhizheng Zhang", "Jiyang Gao", "Song Wang", "Xiaokun Leng", 
+  "Zhiqiang Xie", "Zhenzhen Zhou", "Peng Huang", "Wu Yang", "Yandong Guo", "Yichao Zhu", 
+  "Suibing Zheng", "Hao Cheng", "Xinmin Ding", "Yang Yue","Huanqian Wang", "Chi Chen", 
+  "Jingrui Pang", "YuXi Qian", "Haoran Geng", "Lianli Gao", "Haiyuan Li", "Bin Fang", "Gao Huang", 
+  "Yaodong Yang", "Hao Dong", "He Wang", "Hang Zhao", "Yadong Mu", "Di Hu", "Hao Zhao",
+  "Tiejun Huang", "Shanghang Zhang", "Yonghua Lin", "Zhongyuan Wang", "Guocai Yao"
 ]
 
 // 计算属性：生成BibTeX格式的引用
