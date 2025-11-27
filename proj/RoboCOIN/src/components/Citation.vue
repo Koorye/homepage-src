@@ -26,7 +26,7 @@ const authors = [
   "Dihan Wang", "Ziqiang Ni", "Xiang Yang", "You Liu", "Ruoxuan Feng", "Runtian Xu", "Lei Zhang",
   "Denghang Huang", "Chenghao Jin", "Anlan Yin", "Xinlong Wang", "Zhenguo Sun", "Junkai Zhao",
   "Mengfei Du", "Mingyu Cao", "Xiansheng Chen", "Hongyang Cheng", "Xiaojie Zhang", "Yankai Fu",
-  "Ning Chen", "Cheng Chi", "Sixiang Chen", "Huaihai Lyu", "Xiaoshuai Hao", "Yankai Fu", "Yequan Wang", "Bo Lei",
+  "Ning Chen", "Cheng Chi", "Sixiang Chen", "Huaihai Lyu", "Xiaoshuai Hao", "Yequan Wang", "Bo Lei",
   "Dong Liu", "Xi Yang", "Yance Jiao", "Tengfei Pan", "Yunyan Zhang", "Songjing Wang", "Ziqian Zhang",
   "Xu Liu", "Ji Zhang", "Caowei Meng", "Zhizheng Zhang", "Jiyang Gao", "Song Wang", "Xiaokun Leng", 
   "Zhiqiang Xie", "Zhenzhen Zhou", "Peng Huang", "Wu Yang", "Yandong Guo", "Yichao Zhu", 

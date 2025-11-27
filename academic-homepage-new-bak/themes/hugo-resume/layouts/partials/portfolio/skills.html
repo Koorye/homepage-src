@@ -1,0 +1,33 @@
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+  <div class="my-auto" id="skills-content">
+  <h2 class="mb-5">{{ i18n "skills" }}</h2>
+    {{ $data := $.Data }}
+    {{ range $data.skills }}
+        <div class="subheading mb-3 skills-heading">{{ .grouping }}</div>
+            <ul>
+            {{ range .skills }}
+                {{ $name := "error" }}
+                {{ $iconclass := "devicon-bash-plain" }}
+                {{ if isset . "name" }}
+                    {{ $name = .name }}
+                {{ else }}
+                  {{ $name = . }}
+                {{ end }}
+                {{ if isset . "devicon" }}
+                    {{ $iconclass = printf "devicon-%s-plain devicon-%-original" ( lower .devicon ) (lower .devicon ) }}
+                {{ else }}
+                    {{ $iconclass = printf "devicon-%s-plain devicon-%-original" ( lower $name ) (lower $name ) }}
+                {{ end }}
+                <li class="list-inline-item">
+                      <i class="{{ $iconclass }}"></i>
+                      {{if isset . "link"}}
+                          <a href="{{.link}}">{{$name}}</a>
+                      {{ else }}
+                          {{ $name }}
+                      {{ end }}
+                    </li>
+            {{ end }}
+            </ul>
+    {{ end }}
+  </div>
+</section>

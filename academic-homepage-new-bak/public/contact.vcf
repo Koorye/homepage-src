@@ -1,0 +1,30 @@
+
+BEGIN:VCARD
+VERSION:4.0
+
+
+N:Webbinaro;Eddie;;;
+FN:Eddie Webbinaro
+
+
+TEL;TYPE=WORK,VOICE:1-555-555-1234
+
+
+EMAIL;TYPE=INTERNET,PREF:email@domain.com
+
+
+EMAIL;TYPE=INTERNET,WORK:
+
+
+PHOTO;TYPE=JPG;VALUE=URI:http://localhost:1313/img/TechChat.png
+
+
+ORG:Current Company LTD
+
+
+TITLE:
+
+
+URL:http://localhost:1313/
+
+END:VCARD

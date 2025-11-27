@@ -8,7 +8,7 @@
       <nav class="nav-links">
         <div class="nav-link">
           <img class="nav-icon" src="/icons/pdf.svg" alt="Technical Report Icon" />
-          <a class="nav-item" href="robocoin.pdf" target="_blank">{{ $t('header.navs.report') }}</a>
+          <a class="nav-item" href="https://arxiv.org/abs/2511.17441" target="_blank">{{ $t('header.navs.report') }}</a>
         </div>
         <div class="nav-link">
           <img class="nav-icon" src="/icons/download.svg" alt="Download Icon" />

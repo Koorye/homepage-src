@@ -1,0 +1,43 @@
+/* 全局样式重置和公共样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 全局高亮样式 */
+.highlight-red {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.highlight-blue {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.highlight-blue-bold {
+  color: #3498db;
+  font-weight: 700;
+}
+
+.highlight-link {
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.highlight-link:hover {
+  text-decoration: underline;
+}
+
+/* 图标字体适配（Font Awesome & AI Icons） */
+@import url('https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css');
+@import url('https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css');
